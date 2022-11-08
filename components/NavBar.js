@@ -37,7 +37,11 @@ function NavBar() {
         </Link>
 
         <Link href="/register" legacyBehavior>
-            <a className="text-base md:text-2xl text-white">Register</a>
+            <a className="text-base md:text-2xl text-white mb-4">Register</a>
+        </Link>
+
+        <Link href="/upcoming" legacyBehavior>
+            <a className="text-base md:text-2xl text-white mb-4">Upcoming</a>
         </Link>
       </nav>
     </>
