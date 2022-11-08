@@ -20,7 +20,7 @@ function NavBar() {
       <nav className="bg-gray-700 flex flex-row justify-between items-center">
         <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue">
           <Link href="/" legacyBehavior>
-            <a className="text-base md:text-2xl">
+            <a className="text-base md:text-2xl md:hover:text-3xl hover:text-lg transition-all duration-100">
               Watch <span className="text-red-600">Me</span>
             </a>
           </Link>
@@ -28,7 +28,7 @@ function NavBar() {
 
         <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue space-x-3">
           <button onClick={showNavBar}>
-            <FaBars className="h-6" />
+            <FaBars className="h-6 hover:text-lg transition-all duration-100" />
           </button>
         </div>
       </nav>

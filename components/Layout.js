@@ -5,7 +5,6 @@ import Footer from "./Footer";
 
 function Layout({ children }) {
   return (
-    <div className="flex flex-row">
       <div className="flex flex-col">
         <Meta />
 
@@ -14,7 +13,6 @@ function Layout({ children }) {
         {children}
         <Footer />
       </div>
-    </div>
   );
 }
 
