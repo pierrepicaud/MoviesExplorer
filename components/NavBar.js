@@ -1,17 +1,22 @@
 import React from "react";
 import Link from "next/link";
 import { FaBars } from "react-icons/fa";
-import {useRef} from "react";
-
+import { GrClose } from "react-icons/gr";
+import { useRef } from "react";
+import BackDrop from "./BackDrop";
 
 function NavBar() {
   const navRef = useRef();
-  const showNavbar = () => {
+  const bdropRef = useRef();
+  const showNavBar = () => {
     navRef.current.classList.toggle("translate-x-full");
+    bdropRef.current.classList.toggle("bg-opacity-60");
+    bdropRef.current.classList.toggle("hidden");
   };
-
   return (
+    //wrap this shit around some column flex box
     <>
+      <BackDrop showNavBar={showNavBar} ref={bdropRef} />
       <nav className="bg-gray-700 flex flex-row justify-between items-center">
         <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue">
           <Link href="/" legacyBehavior>
@@ -22,26 +27,36 @@ function NavBar() {
         </div>
 
         <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue space-x-3">
-          <button onClick={showNavbar}>
+          <button onClick={showNavBar}>
             <FaBars className="h-6" />
           </button>
         </div>
       </nav>
-      <nav className="side-nav fixed w-1/6 bg-gray-700 h-screen top-0 right-0 flex flex-col items-center font-bold text-neutral-100 tracking-widest font-bebasneue transition-all duration-100" ref={navRef}>
-        <button onClick={showNavbar} className="mt-6 mb-5">
-          <FaBars className="h-6 text-white" />
+
+      <nav
+        className="side-nav fixed bg-gray-700 top-0 right-0 flex flex-col items-center font-bold text-neutral-100 tracking-widest font-bebasneue transition-all duration-200 pt-4 pl-2 pr-2 translate-x-full"
+        ref={navRef}
+      >
+        <button onClick={showNavBar}>
+          <GrClose className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50"></GrClose>
         </button>
 
         <Link href="/login" legacyBehavior>
-            <a className="text-base md:text-2xl text-white mb-4">Login</a>
+          <a className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50 hover:text-black">
+            Login
+          </a>
         </Link>
 
         <Link href="/register" legacyBehavior>
-            <a className="text-base md:text-2xl text-white mb-4">Register</a>
+          <a className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50 hover:text-black">
+            Register
+          </a>
         </Link>
 
         <Link href="/upcoming" legacyBehavior>
-            <a className="text-base md:text-2xl text-white mb-4">Upcoming</a>
+          <a className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50 hover:text-black">
+            Upcoming
+          </a>
         </Link>
       </nav>
     </>

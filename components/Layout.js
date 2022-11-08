@@ -1,18 +1,21 @@
-import NavBar from "./NavBar"
-import Meta from "./Meta"
-import Footer from "./Footer"
+import NavBar from "./NavBar";
+import Meta from "./Meta";
+import Footer from "./Footer";
 
-function Layout({children}) {
+
+function Layout({ children }) {
   return (
-    <>
-    <Meta/>
-    <NavBar/>
-    <main>
+    <div className="flex flex-row">
+      <div className="flex flex-col">
+        <Meta />
+
+        <NavBar />
+
         {children}
-    </main>
-    <Footer/>
-    </>
-  )
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
-export default Layout
+export default Layout;
