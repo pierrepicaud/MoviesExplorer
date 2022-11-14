@@ -4,8 +4,17 @@ import { FaBars } from "react-icons/fa";
 import { GrClose } from "react-icons/gr";
 import { useRef } from "react";
 import BackDrop from "./BackDrop";
+import { useUser} from "@auth0/nextjs-auth0/dist/frontend/use-user";
 
 function NavBar() {
+  const { user, error, loading } = useUser();
+  let link = "/api/auth/logout";
+  let text = "Join"
+  if (user) {
+    link = "/api/auth/logout"
+    text = "Logout"
+  }
+
   const navRef = useRef();
   const bdropRef = useRef();
   const showNavBar = () => {
@@ -41,15 +50,9 @@ function NavBar() {
           <GrClose className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50"></GrClose>
         </button>
 
-        <Link href="/login" legacyBehavior>
+        <Link href={link} legacyBehavior>
           <a className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50 hover:text-black">
-            Login
-          </a>
-        </Link>
-
-        <Link href="/register" legacyBehavior>
-          <a className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50 hover:text-black">
-            Register
+            {text}
           </a>
         </Link>
 
