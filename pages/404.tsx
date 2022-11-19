@@ -20,7 +20,8 @@ const NotFound = () => {
         <span className="text-red-500">Oops!</span> Page not found
       </h6>
       <p className="text-gray-500 mt-3">
-        The page you're looking for doesn't exist
+        The page you&apos;re looking for doesn&apos;t exist
+
       </p>
       <Link legacyBehavior href="/">
         <a className="bg-blue-600 mt-5 font-semibold px-6 py-2 text-sm">
