@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie }:any) {
   return (
     <Link href={`/movie/${movie.id}`}>
       <div className="bg-white shadow-sm rounded-md cursor-pointer">
@@ -9,7 +9,7 @@ function MovieCard({ movie }) {
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           width={700}
           height={800}
-          className="rounded-t-md"
+          className="rounded-t-md" alt={movie.title}
         ></Image>
         <div className="px-6 py-2">
           <div className="font-bold text-xl mb-1">{movie.title}</div>

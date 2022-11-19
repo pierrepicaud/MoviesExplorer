@@ -1,6 +1,6 @@
 import React from 'react'
 
-function BackDrop({showNavBar}, ref) {
+function BackDrop({showNavBar}:any, ref:any) {
   return (
     <div className='fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-0 hidden' ref={ref} onClick={showNavBar}></div>
   )

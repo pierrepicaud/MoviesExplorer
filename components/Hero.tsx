@@ -14,7 +14,7 @@ const Hero = () => {
         ></Image>
       </div>
       <h1 className="text-2xl text-gray-700 uppercase font-bold">
-        Welcome to WatchMe
+        Welcome to Movie Explorer
       </h1>
       <p className="text-gray-500">Produce FILM feature, TELEVISION and GAME</p>
       <Link href="/contact">

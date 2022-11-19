@@ -7,7 +7,7 @@ import BackDrop from "./BackDrop";
 import { useUser} from "@auth0/nextjs-auth0/dist/frontend/use-user";
 
 function NavBar() {
-  const { user, error, loading } = useUser();
+  const { user, error } = useUser();
   let link = "/api/auth/logout";
   let text = "Join"
   if (user) {
@@ -15,12 +15,12 @@ function NavBar() {
     text = "Logout"
   }
 
-  const navRef = useRef();
-  const bdropRef = useRef();
+  const navRef = useRef<HTMLElement>(null);
+  const bdropRef = useRef<HTMLElement>(null);
   const showNavBar = () => {
-    navRef.current.classList.toggle("translate-x-full");
-    bdropRef.current.classList.toggle("bg-opacity-60");
-    bdropRef.current.classList.toggle("hidden");
+    navRef.current?.classList.toggle("translate-x-full");
+    bdropRef.current?.classList.toggle("bg-opacity-60");
+    bdropRef.current?.classList.toggle("hidden");
   };
   return (
     //wrap this shit around some column flex box
@@ -30,7 +30,7 @@ function NavBar() {
         <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue">
           <Link href="/" legacyBehavior>
             <a className="text-base md:text-2xl md:hover:text-3xl hover:text-lg transition-all duration-100">
-              Watch <span className="text-red-600">Me</span>
+              Movie <span className="text-red-600">Explorer</span>
             </a>
           </Link>
         </div>

@@ -3,7 +3,7 @@ import Meta from "./Meta";
 import Footer from "./Footer";
 import { UserProvider } from "@auth0/nextjs-auth0"
 
-function Layout({ children }) {
+function Layout({ children }:{children:JSX.Element}) {
   return (
       <UserProvider>
         <div className="flex flex-col">
