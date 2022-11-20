@@ -1,5 +1,5 @@
 import axios from "axios";
-import { server } from "../../../config";
+import { server, image_server } from "../../../config";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Meta from "../../../components/Meta";
@@ -12,7 +12,7 @@ const Movie = ({ movie }: any) => {
       <Meta title={movie.title} />
       <div className="px-3">
         <Image
-          src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          src={`${image_server}/t/p/original${movie.backdrop_path}`}
           width={1000}
           height={600}
           className="rounded-md"

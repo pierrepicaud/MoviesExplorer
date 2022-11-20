@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   images:{
     unoptimized: true,
-    domains:['image.tmdb.org']
+    domains:['image.tmdb.org', 'tmdbproxy.herokuapp.com','image-tmdbproxy.herokuapp.com']
   }
 }
 
