@@ -1,12 +1,12 @@
-import axios from "axios";
-import { server, image_server } from "../../../config";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import Meta from "../../../components/Meta";
+import axios from 'axios'
+import { server, image_server } from '../../../config'
+import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Meta from '../../../components/Meta'
 
 const Movie = ({ movie }: any) => {
-  const router = useRouter();
-  const { id } = router.query;
+  const router = useRouter()
+  const { id } = router.query
   return (
     <div className="container max-w-4xl mx-auto pt-6">
       <Meta title={movie.title} />
@@ -21,9 +21,9 @@ const Movie = ({ movie }: any) => {
         <h1 className="font-bold text-xl  my-2">{movie.title}</h1>
         <p className="text-gray-600 text-sm mt-4">{movie.overview}</p>
         <p className="mt-5 text-gray-600 text-sm">
-          Genres:{" "}
+          Genres:{' '}
           <span className="font-bold">
-            {movie.genres.map((genre: { name: any; }) => genre.name).join(", ")}
+            {movie.genres.map((genre: { name: any }) => genre.name).join(', ')}
           </span>
         </p>
         <p className="text-gray-600 text-sm">
@@ -31,33 +31,33 @@ const Movie = ({ movie }: any) => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Movie;
+export default Movie
 
-export async function getStaticProps(context: { params: { id: any; }; }) {
-  const { id } = context.params;
+export async function getStaticProps(context: { params: { id: any } }) {
+  const { id } = context.params
   const res = await axios(
-    `${server}/movie/${id}?api_key=${process.env.API_KEY}&language=en-US&page=1`
-  );
-  const movie = res.data;
+    `${server}/movie/${id}?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+  )
+  const movie = res.data
   return {
     props: { movie },
-  };
+  }
 }
 
 export async function getStaticPaths() {
   const res = await axios(
-    `${server}/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`
-  );
-  const movies = res.data.results;
+    `${server}/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+  )
+  const movies = res.data.results
 
-  const paths = movies.map((movie: { id: { toString: () => any; }; }) => ({
+  const paths = movies.map((movie: { id: { toString: () => any } }) => ({
     params: { id: movie.id.toString() },
-  }));
+  }))
   return {
     paths,
     fallback: false,
-  };
+  }
 }

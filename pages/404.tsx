@@ -1,17 +1,17 @@
-import React from "react";
-import Link from "next/link";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import React from 'react'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const NotFound = () => {
-  const router = useRouter();
+  const router = useRouter()
   useEffect(() => {
     const timer = setTimeout(() => {
-        router.push('/')
-    }, 5000);
+      router.push('/')
+    }, 5000)
 
     return () => clearTimeout(timer)
-  }, []);
+  }, [])
 
   return (
     <div className="flex flex-col items-center justify-center mt-60">
@@ -21,7 +21,6 @@ const NotFound = () => {
       </h6>
       <p className="text-gray-500 mt-3">
         The page you&apos;re looking for doesn&apos;t exist
-
       </p>
       <Link legacyBehavior href="/">
         <a className="bg-blue-600 mt-5 font-semibold px-6 py-2 text-sm">
@@ -29,7 +28,7 @@ const NotFound = () => {
         </a>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound
