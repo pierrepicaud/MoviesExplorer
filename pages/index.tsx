@@ -7,7 +7,7 @@ export default function Home({ movies }: any) {
   return (
     <div className="bg-gray-700">
       <Hero />
-      <MovieGrid movies={movies.results} title="What's Popular?"/>
+      <MovieGrid movies={movies.results} title="What's Popular?" />
     </div>
   )
 }

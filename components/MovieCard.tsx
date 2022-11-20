@@ -4,7 +4,10 @@ import Link from 'next/link'
 function MovieCard({ movie }: any) {
   return (
     <Link href={`/movie/${movie.id}`}>
-      <div className="bg-white shadow-sm rounded-md cursor-pointer" data-testid={`movie-${movie.id}`}>
+      <div
+        className="bg-white shadow-sm rounded-md cursor-pointer"
+        data-testid={`movie-${movie.id}`}
+      >
         <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           width={700}
