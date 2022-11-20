@@ -1,27 +1,27 @@
-import React from "react";
-import Link from "next/link";
-import { FaBars } from "react-icons/fa";
-import { GrClose } from "react-icons/gr";
-import { useRef } from "react";
-import BackDrop from "./BackDrop";
-import { useUser} from "@auth0/nextjs-auth0/dist/frontend/use-user";
+import React from 'react'
+import Link from 'next/link'
+import { FaBars } from 'react-icons/fa'
+import { GrClose } from 'react-icons/gr'
+import { useRef } from 'react'
+import BackDrop from './BackDrop'
+import { useUser } from '@auth0/nextjs-auth0/dist/frontend/use-user'
 
 function NavBar() {
-  const { user, error } = useUser();
-  let link = "/api/auth/login";
-  let text = "Join"
+  const { user, error } = useUser()
+  let link = '/api/auth/login'
+  let text = 'Join'
   if (user) {
-    link = "/api/auth/logout"
-    text = "Logout"
+    link = '/api/auth/logout'
+    text = 'Logout'
   }
 
-  const navRef = useRef<HTMLElement>(null);
-  const bdropRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null)
+  const bdropRef = useRef<HTMLElement>(null)
   const showNavBar = () => {
-    navRef.current?.classList.toggle("translate-x-full");
-    bdropRef.current?.classList.toggle("bg-opacity-60");
-    bdropRef.current?.classList.toggle("hidden");
-  };
+    navRef.current?.classList.toggle('translate-x-full')
+    bdropRef.current?.classList.toggle('bg-opacity-60')
+    bdropRef.current?.classList.toggle('hidden')
+  }
   return (
     //wrap this shit around some column flex box
     <>
@@ -63,7 +63,7 @@ function NavBar() {
         </Link>
       </nav>
     </>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

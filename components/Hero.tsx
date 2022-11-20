@@ -1,12 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 const Hero = () => {
   return (
     <div className="text-center bg-white pb-10">
       <div className="w-60 mx-auto">
         <Image
-          src={"/undraw_home_cinema_l7yl.svg"}
+          src={'/undraw_home_cinema_l7yl.svg'}
           width={200}
           height={200}
           layout="responsive"
@@ -23,7 +23,7 @@ const Hero = () => {
         </button>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
