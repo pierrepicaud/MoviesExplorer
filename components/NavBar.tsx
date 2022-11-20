@@ -8,7 +8,7 @@ import { useUser} from "@auth0/nextjs-auth0/dist/frontend/use-user";
 
 function NavBar() {
   const { user, error } = useUser();
-  let link = "/api/auth/logout";
+  let link = "/api/auth/login";
   let text = "Join"
   if (user) {
     link = "/api/auth/logout"
