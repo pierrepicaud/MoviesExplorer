@@ -6,7 +6,7 @@ import Meta from '../../../components/Meta'
 import getConfig from 'next/config'
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
-publicRuntimeConfig.API_KEY = "71661be18f2fafefa4966ae143fa2251"
+// "71661be18f2fafefa4966ae143fa2251" = "71661be18f2fafefa4966ae143fa2251"
 
 const Movie = ({ movie }: any) => {
   const router = useRouter()
@@ -43,7 +43,7 @@ export default Movie
 export async function getStaticProps(context: { params: { id: any } }) {
   const { id } = context.params
   const res = await axios(
-    `${server}/movie/${id}?api_key=${publicRuntimeConfig.API_KEY}&language=en-US&page=1`,
+    `${server}/movie/${id}?api_key=${"71661be18f2fafefa4966ae143fa2251"}&language=en-US&page=1`,
   )
   const movie = res.data
   return {
@@ -53,7 +53,7 @@ export async function getStaticProps(context: { params: { id: any } }) {
 
 export async function getStaticPaths() {
   const res = await axios(
-    `${server}/movie/popular?api_key=${publicRuntimeConfig.API_KEY}&language=en-US&page=1`,
+    `${server}/movie/popular?api_key=${"71661be18f2fafefa4966ae143fa2251"}&language=en-US&page=1`,
   )
   const movies = res.data.results
 
