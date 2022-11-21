@@ -7,8 +7,6 @@ import Image from 'next/image'
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
-// "71661be18f2fafefa4966ae143fa2251" = "71661be18f2fafefa4966ae143fa2251"
-
 export default function LiveSearch() {
   const [searchResults, setsearchResults] = useState([])
   const [searchTerm, setsearchTerm] = useState('')
@@ -44,7 +42,7 @@ export default function LiveSearch() {
   const search = async (event: SyntheticEvent) => {
     event.preventDefault()
     let movies = await fetch(
-      `${server}/search/movie?api_key=${"71661be18f2fafefa4966ae143fa2251"}&language=en-US&page=1&include_adult=false&query=${searchTerm}`,
+      `${server}/search/movie?api_key=${publicRuntimeConfig.API_KEY}&language=en-US&page=1&include_adult=false&query=${searchTerm}`,
     )
     movies = await movies.json()
     setsearchResults((movies as any).results)
