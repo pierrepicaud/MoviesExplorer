@@ -7,6 +7,7 @@ import BackDrop from './BackDrop'
 import { initFirebase } from '../firebase/fireBaseApp'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import LiveSearch from './LiveSearch'
 
 function NavBar() {
   const navRef = useRef<HTMLElement>(null)
@@ -21,7 +22,7 @@ function NavBar() {
   const provider = new GoogleAuthProvider()
   provider.setCustomParameters({
     prompt: 'select_account',
-  });
+  })
   const auth = getAuth()
   const [user, loading] = useAuthState(auth)
 
@@ -33,33 +34,33 @@ function NavBar() {
     return <div>Loading...</div>
   }
 
-  let text = 'Signin'
-  let loginPromt = 'Not logged in, signin to continue'
-  let func = signIn
+  let authStatus = 'Signin'
+  let loginPromt = 'Please login'
+  let authFunc = signIn
 
   if (user) {
-    text = 'Logout'
-    loginPromt = 'Logged in as ' + user?.displayName
-    func = () => auth.signOut()
+    authStatus = 'Logout'
+    loginPromt = '' + user.displayName
+    authFunc = () => auth.signOut()
   }
 
   return (
-    //wrap this shit around some column flex box
     <>
       <BackDrop showNavBar={showNavBar} ref={bdropRef} />
-      <nav className="bg-gray-700 flex flex-row justify-between items-center">
+      <nav className="bg-gray-700 flex flex-row items-center">
         <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue">
           <Link href="/" legacyBehavior>
-            <>
-              <a className="text-base md:text-2xl md:hover:text-3xl hover:text-lg transition-all duration-100">
-                Movie <span className="text-red-600">Explorer</span>
-              </a>
-              <div>{loginPromt}</div>
-            </>
+            <a className="text-base md:text-2xl md:hover:text-3xl hover:text-lg transition-all duration-100">
+              Movie <span className="text-red-600">Explorer</span>
+            </a>
           </Link>
         </div>
+        {/* stupid margining */}
+        <div className="ml-[255px]">
+          <LiveSearch></LiveSearch>
+        </div>
 
-        <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue space-x-3">
+        <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue space-x-3 ml-auto">
           <button onClick={showNavBar}>
             <FaBars className="h-6 hover:text-lg transition-all duration-100" />
           </button>
@@ -74,9 +75,11 @@ function NavBar() {
           <GrClose className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50"></GrClose>
         </button>
 
-        <button onClick={func}>
+        <div className="font-thin mb-4 font-mono">{loginPromt}</div>
+
+        <button onClick={authFunc}>
           <div className="text-base md:text-2xl text-white mb-4 hover:bg-slate-50 hover:text-black">
-            {text}
+            {authStatus}
           </div>
         </button>
 

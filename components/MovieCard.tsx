@@ -5,7 +5,7 @@ function MovieCard({ movie }: any) {
   return (
     <Link href={`/movie/${movie.id}`}>
       <div
-        className="bg-white shadow-sm rounded-md cursor-pointer"
+        className="bg-white shadow-sm rounded-md cursor-pointer h-full hover:scale-105"
         data-testid={`movie-${movie.id}`}
       >
         <Image

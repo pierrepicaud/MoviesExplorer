@@ -4,7 +4,7 @@ import Link from 'next/link'
 const Hero = () => {
   return (
     <div className="text-center bg-white pb-10">
-      <div className="w-60 mx-auto">
+      <div className="w-60 mx-auto pt-6">
         <Image
           src={'/undraw_home_cinema_l7yl.svg'}
           width={200}
