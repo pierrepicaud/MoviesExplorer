@@ -64,7 +64,7 @@ export default function LiveSearch() {
             <ul>
               {searchResults?.map((each: any, index) => {
                 return (
-                  <Link href={`/movie/${each.id}`}>
+                  <Link href={`/movie/${each.id}`} key={index}>
                     <li
                       key={index}
                       className="flex flex-row font-sans hover:bg-slate-300 p-1 rounded-md"
