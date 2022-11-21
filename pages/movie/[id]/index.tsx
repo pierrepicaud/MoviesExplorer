@@ -3,6 +3,8 @@ import { server, image_server } from '../../../config'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Meta from '../../../components/Meta'
+import getConfig from 'next/config'
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
 const Movie = ({ movie }: any) => {
   const router = useRouter()
@@ -39,7 +41,7 @@ export default Movie
 export async function getStaticProps(context: { params: { id: any } }) {
   const { id } = context.params
   const res = await axios(
-    `${server}/movie/${id}?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+    `${server}/movie/${id}?api_key=${publicRuntimeConfig.API_KEY}&language=en-US&page=1`,
   )
   const movie = res.data
   return {
@@ -49,7 +51,7 @@ export async function getStaticProps(context: { params: { id: any } }) {
 
 export async function getStaticPaths() {
   const res = await axios(
-    `${server}/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+    `${server}/movie/popular?api_key=${publicRuntimeConfig.API_KEY}&language=en-US&page=1`,
   )
   const movies = res.data.results
 
