@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { image_server, server } from '../config'
 import { SyntheticEvent } from 'react'
 import getConfig from 'next/config'
@@ -10,7 +10,27 @@ const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 export default function LiveSearch() {
   const [searchResults, setsearchResults] = useState([])
   const [searchTerm, setsearchTerm] = useState('')
+  const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>
   const [formInputs, setformInputs] = useState({})
+  useEffect(() => {
+    if(searchTerm == ''){
+      inputRef.current.placeholder = "Input movie cannot be empty!"
+      inputRef.current.classList.toggle("placeholder-red-500")
+      inputRef.current.classList.toggle("border")
+      inputRef.current.classList.toggle("border-red-800")
+      inputRef.current.classList.toggle("border-4")
+      inputRef.current.classList.toggle("focus:outline-red-800")
+      inputRef.current.classList.toggle("focus:outline-4")
+    }
+    else{
+      inputRef.current.classList.remove("placeholder-red-500")
+      inputRef.current.classList.remove("border")
+      inputRef.current.classList.remove("border-red-800")
+      inputRef.current.classList.remove("border-4")
+      inputRef.current.classList.remove("focus:outline-red-800")
+      inputRef.current.classList.remove("focus:outline-4")
+    }
+  }, [searchTerm])
 
   const handleInputs = (event: SyntheticEvent) => {
     let { name, value } = event.target as HTMLInputElement
@@ -18,6 +38,8 @@ export default function LiveSearch() {
     setsearchTerm(value)
     search(event)
   }
+
+  console.log("fromlive" + publicRuntimeConfig.API_KEY + "and " + serverRuntimeConfig.API_KEY)
 
   const search = async (event: SyntheticEvent) => {
     event.preventDefault()
@@ -35,6 +57,8 @@ export default function LiveSearch() {
           className="w-[400px] rounded-lg py-1 px-3 font-mono tracking-wider"
           onChange={handleInputs}
           value={searchTerm}
+          ref={inputRef}
+          required
         />
 
         {searchTerm ? (
@@ -43,7 +67,10 @@ export default function LiveSearch() {
               {searchResults?.map((each: any, index) => {
                 return (
                   <Link href={`/movie/${each.id}`}>
-                    <li key={index} className="flex flex-row font-sans hover:bg-slate-300 p-1 rounded-md">
+                    <li
+                      key={index}
+                      className="flex flex-row font-sans hover:bg-slate-300 p-1 rounded-md"
+                    >
                       <Image
                         src={`${image_server}/t/p/w500${each.poster_path}`}
                         width={20}
@@ -51,7 +78,9 @@ export default function LiveSearch() {
                         className="rounded-md"
                         alt={each.title}
                       ></Image>
-                      <div className='ml-2 font-serif text-lg tracking-wide'>{each.title}</div>
+                      <div className="ml-2 font-serif text-lg tracking-wide">
+                        {each.title}
+                      </div>
                     </li>
                   </Link>
                 )
