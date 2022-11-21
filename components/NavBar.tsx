@@ -48,7 +48,7 @@ function NavBar() {
     <>
       <BackDrop showNavBar={showNavBar} ref={bdropRef} />
       <nav className="bg-gray-700 flex flex-row items-center">
-        <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue">
+        <div className="font-bold text-neutral-100 p-4 tracking-widest font-bebasneue w-[300px]">
           <Link href="/" legacyBehavior>
             <a className="text-base md:text-2xl md:hover:text-3xl hover:text-lg transition-all duration-100">
               Movie <span className="text-red-600">Explorer</span>
@@ -56,7 +56,7 @@ function NavBar() {
           </Link>
         </div>
         {/* stupid margining */}
-        <div className="ml-[255px]">
+        <div className="ml-[140px]">
           <LiveSearch></LiveSearch>
         </div>
 
