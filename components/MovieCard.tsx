@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { image_server } from '../config'
 
 function MovieCard({ movie }: any) {
   return (
@@ -9,7 +10,7 @@ function MovieCard({ movie }: any) {
         data-testid={`movie-${movie.id}`}
       >
         <Image
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={`${image_server}/t/p/w500${movie.poster_path}`}
           width={700}
           height={800}
           className="rounded-t-md"

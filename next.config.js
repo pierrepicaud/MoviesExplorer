@@ -9,6 +9,12 @@ const nextConfig = {
       'image-tmdbproxy.herokuapp.com',
     ],
   },
+  publicRuntimeConfig: {
+    API_KEY: process.env.API_KEY,
+  },
+  serverRuntimeConfig: {
+    API_KEY: process.env.API_KEY,
+  },
 }
 
 module.exports = nextConfig
