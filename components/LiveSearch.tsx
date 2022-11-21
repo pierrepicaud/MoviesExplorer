@@ -7,6 +7,8 @@ import Image from 'next/image'
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
+publicRuntimeConfig.API_KEY = "71661be18f2fafefa4966ae143fa2251"
+
 export default function LiveSearch() {
   const [searchResults, setsearchResults] = useState([])
   const [searchTerm, setsearchTerm] = useState('')

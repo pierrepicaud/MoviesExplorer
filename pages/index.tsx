@@ -5,6 +5,8 @@ import MovieGrid from '../components/MovieGrid'
 import getConfig from 'next/config'
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
+publicRuntimeConfig.API_KEY = "71661be18f2fafefa4966ae143fa2251"
+
 export default function Home({ movies }: any) {
   return (
     <div className="bg-gray-700">

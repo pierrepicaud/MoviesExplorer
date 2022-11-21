@@ -4,7 +4,9 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Meta from '../../../components/Meta'
 import getConfig from 'next/config'
+
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
+publicRuntimeConfig.API_KEY = "71661be18f2fafefa4966ae143fa2251"
 
 const Movie = ({ movie }: any) => {
   const router = useRouter()
